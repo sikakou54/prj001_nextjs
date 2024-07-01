@@ -53,7 +53,7 @@ export default function App() {
     } else {
       setError('8文字以上で大文字・小文字・数字を含む必要があります。')
     }
-  }, [router.asPath, password, confirm])
+  }, [user, router, password, confirm])
 
   const getRefreshTokenFromUrl = (currentUrl: string) => {
     if (currentUrl.includes('refresh_token')) {
