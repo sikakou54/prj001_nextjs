@@ -45,7 +45,7 @@ export default function App() {
           console.error(result.error)
           router.replace('/error')
         } else {
-          router.replace('/success')
+          router.replace('/change-password-success')
         }
       } else {
         router.replace('/error')
