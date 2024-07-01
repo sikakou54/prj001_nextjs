@@ -7,7 +7,7 @@ import {
   Input,
   Text,
 } from "native-base";
-import { supabaseAdmin } from "../../supabase";
+import { supabaseAdmin } from "../supabase";
 import { useRouter } from "next/dist/client/router";
 
 function validatePassword(str: string) {
