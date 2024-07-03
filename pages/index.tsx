@@ -1,8 +1,9 @@
 import React from "react";
 import {
   Text,
-  Box
+  Box,
 } from "native-base";
+import Image from 'next/image'
 
 export default function App() {
   return (
@@ -13,7 +14,12 @@ export default function App() {
       alignItems={'center'}
       justifyContent={'center'}
     >
-      <Text fontSize={'2xl'}>Opini</Text>
+      <Image
+        src={require('../public/brandmark-design.png')}
+        alt='splash'
+        width={400}
+        height={160}
+      />
     </Box>
   )
 }

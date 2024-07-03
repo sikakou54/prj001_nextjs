@@ -57,6 +57,7 @@ export default function App() {
         h={'full'}
         alignItems={'center'}
         justifyContent={'center'}
+        bg={'#f0f4f5'}
       >
         <Spinner size={'lg'} />
       </Box>

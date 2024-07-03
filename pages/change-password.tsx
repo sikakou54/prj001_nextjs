@@ -4,6 +4,7 @@ import { supabaseAdmin } from "../supabase"
 import { useRouter } from "next/dist/client/router"
 import { User } from "@supabase/supabase-js"
 import { getUrlParam, validatePassword } from "../common"
+import Image from 'next/image'
 
 const App = () => {
   const router = useRouter()
@@ -50,27 +51,38 @@ const App = () => {
 
   if (user) {
     return (
-      <Box w="full" h="full" alignItems="center" justifyContent="center">
-        <VStack w={300} space={2} mb={5}>
-          <Heading w="full" size="sm">新しいパスワード</Heading>
-          <Input size="md" onChangeText={text => setPassword(text)} secureTextEntry={true} />
-          <Heading w="full" size="sm">パスワード(確認)</Heading>
-          <Input size="md" onChangeText={text => setConfirm(text)} secureTextEntry={true} />
-          {error && (
-            <Text fontSize="xs" color="#FF4530">{error}</Text>
-          )}
-        </VStack>
-        <Button
-          onPress={onPress}
-          w={300}
-          fontSize="md"
-          isDisabled={password === "" || confirm === "" || password !== confirm}
-        >送信</Button>
+      <Box w={'full'} h={'full'} bg={'#f0f4f5'}>
+        <Box w={'full'} h={'10%'} p={1}>
+          <Image
+            src={require('../public/brandmark-design.png')}
+            alt='splash'
+            width={200}
+            height={80}
+          />
+        </Box>
+        <Box w="full" h="90%" alignItems="center" justifyContent="center">
+          <VStack w={300} space={2} mb={5}>
+            <Heading w="full" size="sm">新しいパスワード</Heading>
+            <Input size="md" onChangeText={text => setPassword(text)} secureTextEntry={true} />
+            <Heading w="full" size="sm">パスワード(確認)</Heading>
+            <Input size="md" onChangeText={text => setConfirm(text)} secureTextEntry={true} />
+            {error && (
+              <Text fontSize="xs" color="#FF4530">{error}</Text>
+            )}
+          </VStack>
+          <Button
+            onPress={onPress}
+            w={300}
+            fontSize="md"
+            isDisabled={password === "" || confirm === "" || password !== confirm}
+          >送信</Button>
+        </Box>
       </Box>
+
     )
   } else {
     return (
-      <Box w="full" h="full" alignItems="center" justifyContent="center">
+      <Box w="full" h="full" alignItems="center" justifyContent="center" bg={'#f0f4f5'}>
         <Spinner size="lg" />
       </Box>
     )
