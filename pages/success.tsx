@@ -9,25 +9,14 @@ import {
 import { supabaseAdmin } from "../supabase";
 import { useRouter } from "next/dist/client/router";
 import { User } from "@supabase/supabase-js";
+import { getUrlParam } from "../common";
 
 export default function App() {
   const router = useRouter()
   const [user, setUser] = useState<User | undefined>(undefined)
-  const getRefreshTokenFromUrl = (currentUrl: string) => {
-    if (currentUrl.includes('refresh_token')) {
-      const urlParams = new URLSearchParams(currentUrl.split('#')[1]);
-      const refreshToken = urlParams.get('refresh_token');
-      if (refreshToken) {
-        return refreshToken;
-      } else {
-        return undefined;
-      }
-    } else {
-      return undefined;
-    }
-  };
+
   const onLoad = useCallback(async () => {
-    const refresh_token = getRefreshTokenFromUrl(router.asPath)
+    const refresh_token = getUrlParam('refresh_token', router.asPath)
     if (undefined === refresh_token) {
       router.replace('/error')
     } else {
@@ -42,7 +31,7 @@ export default function App() {
 
   useEffect(() => {
     onLoad()
-  }, [router])
+  }, [onLoad])
 
   if (undefined !== user) {
     return (

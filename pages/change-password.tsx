@@ -36,7 +36,7 @@ const App = () => {
       router.replace("/error")
     } else {
       const { data } = await supabaseAdmin.auth.refreshSession({ refresh_token })
-      if (data?.user) {
+      if (null !== data && null !== data.user) {
         setUser(data.user)
       } else {
         router.replace("/error")
@@ -46,7 +46,7 @@ const App = () => {
 
   useEffect(() => {
     onLoad()
-  }, [])
+  }, [onLoad])
 
   if (user) {
     return (
