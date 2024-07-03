@@ -19,6 +19,7 @@ const App = () => {
       if (null !== data && null !== data.user) {
         setUser(data.user)
       } else {
+        console.error('user is null', data)
         router.replace('/error')
       }
     }

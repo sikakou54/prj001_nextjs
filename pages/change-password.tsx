@@ -24,6 +24,7 @@ const App = () => {
           router.replace('/change-password-success')
         }
       } else {
+        console.error('user is undefined', user)
         router.replace('/error')
       }
     } else {
@@ -40,6 +41,7 @@ const App = () => {
       if (null !== data && null !== data.user) {
         setUser(data.user)
       } else {
+        console.error('user is null', data)
         router.replace('/error')
       }
     }
