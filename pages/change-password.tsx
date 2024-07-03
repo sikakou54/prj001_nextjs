@@ -49,44 +49,42 @@ const App = () => {
     onLoad()
   }, [onLoad])
 
-  if (user) {
-    return (
-      <Box w={'full'} h={'full'} bg={'#f0f4f5'}>
-        <Box w={'full'} h={'10%'} p={1}>
+  return (
+    <Box w={'full'} h={'full'} bg={'#f0f4f5'}>
+      <Box w={'full'} h={'10%'} p={5}>
+        <Box w={100} h={20}>
           <Image
             src={require('../public/brandmark-design.png')}
             alt='splash'
-            width={200}
-            height={80}
           />
         </Box>
-        <Box w="full" h="90%" alignItems="center" justifyContent="center">
-          <VStack w={300} space={2} mb={5}>
-            <Heading w="full" size="sm">新しいパスワード</Heading>
-            <Input size="md" onChangeText={text => setPassword(text)} secureTextEntry={true} />
-            <Heading w="full" size="sm">パスワード(確認)</Heading>
-            <Input size="md" onChangeText={text => setConfirm(text)} secureTextEntry={true} />
-            {error && (
-              <Text fontSize="xs" color="#FF4530">{error}</Text>
-            )}
-          </VStack>
-          <Button
-            onPress={onPress}
-            w={300}
-            fontSize="md"
-            isDisabled={password === "" || confirm === "" || password !== confirm}
-          >送信</Button>
-        </Box>
       </Box>
-
-    )
-  } else {
-    return (
-      <Box w="full" h="full" alignItems="center" justifyContent="center" bg={'#f0f4f5'}>
-        <Spinner size="lg" />
+      <Box w="full" h="90%" alignItems="center" justifyContent="center">
+        {undefined !== user ? (
+          <>
+            <VStack w={300} space={2} mb={5}>
+              <Heading w="full" size="sm">新しいパスワード</Heading>
+              <Input size="md" onChangeText={text => setPassword(text)} secureTextEntry={true} />
+              <Heading w="full" size="sm">パスワード(確認)</Heading>
+              <Input size="md" onChangeText={text => setConfirm(text)} secureTextEntry={true} />
+              {error && (
+                <Text fontSize="xs" color="#FF4530">{error}</Text>
+              )}
+            </VStack>
+            <Button
+              onPress={onPress}
+              w={300}
+              fontSize="md"
+              isDisabled={password === "" || confirm === "" || password !== confirm}
+              bg={'#8eb2b6'}
+            >送信</Button>
+          </>
+        ) : (
+          <Spinner size={'lg'} color={'#8eb2b6'} />
+        )}
       </Box>
-    )
-  }
+    </Box>
+  )
 }
 
 export default App
