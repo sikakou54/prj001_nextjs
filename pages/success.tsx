@@ -1,15 +1,15 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react"
 import {
   Box,
   VStack,
   Text,
   Spinner,
   CheckCircleIcon,
-} from "native-base";
-import { supabaseAdmin } from "../supabase";
-import { useRouter } from "next/dist/client/router";
-import { User } from "@supabase/supabase-js";
-import { getUrlParam } from "../common";
+} from "native-base"
+import { supabaseAdmin } from "../supabase"
+import { useRouter } from "next/dist/client/router"
+import { User } from "@supabase/supabase-js"
+import { getUrlParam } from "../common"
 
 export default function App() {
   const router = useRouter()
@@ -49,7 +49,7 @@ export default function App() {
         />
         <Text fontSize={'2xl'}>認証成功</Text>
       </VStack>
-    );
+    )
   } else {
     return (
       <Box
