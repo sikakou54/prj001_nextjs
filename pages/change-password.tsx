@@ -52,18 +52,12 @@ const App = () => {
     return (
       <Box w="full" h="full" alignItems="center" justifyContent="center">
         <VStack w={300} space={2} mb={5}>
-          <Heading w="full" size="sm">
-            新しいパスワード
-          </Heading>
+          <Heading w="full" size="sm">新しいパスワード</Heading>
           <Input size="md" onChangeText={text => setPassword(text)} secureTextEntry={true} />
-          <Heading w="full" size="sm">
-            パスワード(確認)
-          </Heading>
+          <Heading w="full" size="sm">パスワード(確認)</Heading>
           <Input size="md" onChangeText={text => setConfirm(text)} secureTextEntry={true} />
           {error && (
-            <Text fontSize="xs" color="#FF4530">
-              {error}
-            </Text>
+            <Text fontSize="xs" color="#FF4530">{error}</Text>
           )}
         </VStack>
         <Button
@@ -71,9 +65,7 @@ const App = () => {
           w={300}
           fontSize="md"
           isDisabled={password === "" || confirm === "" || password !== confirm}
-        >
-          送信
-        </Button>
+        >送信</Button>
       </Box>
     )
   } else {
