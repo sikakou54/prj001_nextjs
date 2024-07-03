@@ -13,6 +13,7 @@ const App = () => {
   const onLoad = useCallback(async () => {
     const refresh_token = getUrlParam('refresh_token', router.asPath)
     if (undefined === refresh_token) {
+      console.error('refresh_token is undefined', refresh_token)
       router.replace('/error')
     } else {
       const { data } = await supabaseAdmin.auth.refreshSession({ refresh_token })
